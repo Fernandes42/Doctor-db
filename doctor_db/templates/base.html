@@ -15,8 +15,88 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
+    <style>
+    @font-face { font-family: Archia Regular;
+                 font-style: normal;
+                 font-weight: normal;
+                 src: url('Archia_Regular/Archia Regular Desktop/Archia-Regular.otf'),
+                      url('Archia_Regular/Archia Regular Webfont/archia-regular-webfont.ttf') format('truetype'),
+                      url('Archia_Regular/Archia Regular Webfont/archia-regular-webfont.woff') format('woff'),
+                      url('Archia_Regular/Archia Regular Webfont/archia-regular-webfont.woff2') format('woff2'),
+                      url('Archia_Regular/Archia Regular Webfont/archia-regular-webfont.eot'); }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .navContainer {
+        width: 100%;
+        height: 65px;
+        position: fixed;
+        background-color: #4390BC;
+        font-family: Archia Regular;
+        font-size: 20px;
+        color: white;
+    }
+    .navBar ul {
+        margin-left: 80px;
+        list-style: none;
+        display: inline-flex;
+    }
+    .navBar li {
+        padding-left: 50px;
+    }
+    .navBar li a:hover {
+        color: white;
+        text-decoration: underline;
+    }
+    .navBar li a {
+        color: white;
+        text-decoration: none;
+    }
+    footer {
+        position: fixed;
+        background-color: black;
+        width: 100%;
+        height: 50px;
+        text-align: center;
+        bottom: 0;
+    }
+    .footerDiv {
+        display: inline-flex;
+    }
+    .closingText {
+        position: relative;
+        color: white;
+        font-family: Archia Regular;
+        font-size: 16px;
+        padding-top: 4px;
+    }
+    .github {
+        position: relative;
+        padding-top: 12px;
+        padding-left: 40px;
+    }
+    .twitter{
+        position: relative;
+        padding-top: 12px;
+        padding-left: 25px;
+    }
+    .facebook{
+        position: relative;
+        padding-top: 12px;
+        padding-left: 25px;
+    }
+    .generalcolor {
+        color: white;
+    }
     {% block css_style %}
 
     {% endblock %}
@@ -30,10 +110,36 @@
     </title>
     </head>
     <body>
-    {% block body %}
-    {% endblock %}
-    <script>
-          {% block js %}  {% endblock %}
-    </script>
-  </body>
+        <header class="navContainer">
+            <nav class="navBar">
+                <ul>
+                    <li> <a href="">Home</a> </li>
+                    <li> <a href="">About us</a> </li>
+                    <li> <a href="">Access database</a> </li>
+                    <li> <a href="">Log in</a></li>
+                </ul>
+            </nav>
+        </header>
+        {% block body %}
+        {% endblock %}
+        <footer>
+            <div class="footerDiv">
+                <span class="closingText">
+                    <p>Made with <i class="fa fa-heart fa-1x"></i> by the GT team</p>
+                </span>
+                <span class="github">
+                    <a target="_blank" href="https://github.com/Fernandes42/Doctor-db"><i class="fa fa-github fa-2x generalcolor"></i></a>
+                </span>
+                <span class="twitter">
+                    <a target="_blank" href="https://twitter.com/who"><i class="fa fa-twitter fa-2x generalcolor"></i></a>
+                </span>
+                <span class="facebook">
+                    <a target="_blank" href="https://www.facebook.com/WHO/"><i class="fa fa-facebook fa-2x generalcolor"></i></a>
+                </span>
+            </div>
+        </footer>
+        <script>
+        {% block js %}  {% endblock %}
+        </script>
+    </body>
 </html>
