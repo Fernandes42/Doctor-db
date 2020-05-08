@@ -1,0 +1,90 @@
+@font-face { font-family: Archia Regular; 
+             font-style: normal;
+             font-weight: normal;
+             src: url('Archia_Regular/Archia Regular Desktop/Archia-Regular.otf'),
+                  url('Archia_Regular/Archia Regular Webfont/archia-regular-webfont.ttf') format('truetype'),
+                  url('Archia_Regular/Archia Regular Webfont/archia-regular-webfont.woff') format('woff'),
+                  url('Archia_Regular/Archia Regular Webfont/archia-regular-webfont.woff2') format('woff2'),
+                  url('Archia_Regular/Archia Regular Webfont/archia-regular-webfont.eot'); }
+
+* {
+    box-sizing: border-box;
+} 
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navContainer {
+    width: 100%;
+    height: 65px;
+    position: fixed;
+    background-color: #4390BC;
+    font-family: Archia Regular;
+    font-size: 20px;
+    color: white;
+}
+
+.navBar ul {
+    margin-left: 80px;
+    list-style: none;
+    display: inline-flex;
+}
+
+.navBar li {
+    padding-left: 50px;
+}
+
+.navBar li a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.navBar li a {
+    color: white;
+    text-decoration: none;
+}
+
+footer {
+    position: fixed;
+    background-color: black;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    bottom: 0;
+}
+
+.footerDiv {
+    display: inline-flex;
+}
+
+.closingText {
+    position: relative;
+    color: white;
+    font-family: Archia Regular;
+    font-size: 16px;
+    padding-top: 4px;
+}
+
+.github {
+    position: relative;
+    padding-top: 12px;
+    padding-left: 40px;
+}
+
+.twitter{
+    position: relative;
+    padding-top: 12px;
+    padding-left: 25px;
+}
+
+.facebook{
+    position: relative;
+    padding-top: 12px;
+    padding-left: 25px;
+}
+
+.generalcolor {
+    color: white;
+}
