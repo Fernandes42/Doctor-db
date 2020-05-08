@@ -4,8 +4,11 @@
     <meta charset="utf-8">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    {% block stylesheet %}
     {% load static %}
     <link rel="stylesheet" href= "{% static 'style.css' %}">
+    {% endblock %}
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
