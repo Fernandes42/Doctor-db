@@ -1,4 +1,4 @@
-@font-face { font-family: Archia Regular; 
+@font-face { font-family: Archia Regular;
              font-style: normal;
              font-weight: normal;
              src: url('Archia_Regular/Archia Regular Desktop/Archia-Regular.otf'),
@@ -9,7 +9,7 @@
 
 * {
     box-sizing: border-box;
-} 
+}
 
 body {
     margin: 0;
