@@ -13,6 +13,9 @@ def register(response):
     form = UserCreationForm();
     return render(response, "register/register.html", {"form":form})
 
+def accessdb(request):
+    return render(request, "accessdb.html")
+
 def data_form(request):
     if request.method == 'POST':
         form = Covid_form(request.POST)

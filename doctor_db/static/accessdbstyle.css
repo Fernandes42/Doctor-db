@@ -1,0 +1,16 @@
+.chartSection {
+    font-family: Archia Regular;
+    z-index: 100;
+}
+
+#columnchart_values {
+    padding-top: 100px;
+    float: left;
+}
+
+#regions_div {
+    float: right;
+    padding-right: 40px;
+    padding-top: 100px;
+}
+

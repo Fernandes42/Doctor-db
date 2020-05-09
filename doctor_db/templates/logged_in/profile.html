@@ -1,14 +1,78 @@
 {% extends 'base_loggedin.html' %}
+{% block head %}
+<!--Load the AJAX API-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {
+      'packages':['geochart'],
+      // Note: you will need to get a mapsApiKey for your project.
+      // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+      'mapsApiKey': 'AIzaSyDuzdgUcmvMNNgvoaCV7-wxVeUhYGzVfQI'
+    });
+    google.charts.setOnLoadCallback(drawRegionsMap);
 
-{% block stylesheet %}
-    {% load static %}
-    <!-- Replace if you want your own custom stylesheet -->
-    <link rel="stylesheet" href= "{% static 'accessdbstyle.css' %}">
-    <link rel="stylesheet" href= "{% static 'style.css' %}">
+    function drawRegionsMap() {
+      var data = google.visualization.arrayToDataTable([
+        ['Country', 'Popularity of Ritonavir'],
+        ['Germany', 200],
+        ['United States', 300],
+        ['Colombia', 1000],
+        ['Brazil', 400],
+        ['Canada', 500],
+        ['France', 600],
+        ['RU', 700]
+      ]);
+
+      var options = {};
+
+      var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+      chart.draw(data, options);
+    }
+  </script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Medicine", "Recovered", { role: "style" } ],
+        ["Favilavir", 8, "blue"],
+        ["Ritonavir", 54, "#b87333"],
+        ["Chloroquine", 200, "silver"],
+        ["Lopinavir", 400, "gold"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Medicine applied vs. Recovered",
+        width: 600,
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+  }
+  </script>
+  {% block stylesheet %}
+  {% load static %}
+  <!-- Replace if you want your own custom stylesheet -->
+  <link rel="stylesheet" href= "{% static 'accessdbstyle.css' %}">
+  <link rel="stylesheet" href= "{% static 'style.css' %}">
+{% endblock %}
 {% endblock %}
 
 {% block body %}
-<section class="cl">
-
+<section class="chartSection">
+    <div id="columnchart_values" style="width: 30%; height: 300px;"></div>
+    <div id="regions_div" style="width: 50%; height: 500px;"></div>
 </section>
 {% endblock %}
