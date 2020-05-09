@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('form/', data_form, name='form'),
     path("", index, name="home"),
-    path('db/', views.accessdb, name='accessdb'),
+    path('db/', viewdb, name='viewdb'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('django_registration.backends.activation.urls')),
 ]

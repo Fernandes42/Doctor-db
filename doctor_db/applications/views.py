@@ -13,8 +13,8 @@ def register(response):
     form = UserCreationForm();
     return render(response, "register/register.html", {"form":form})
 
-def accessdb(request):
-    return render(request, "accessdb.html")
+def viewdb(request):
+    return render(request, "logged_in/viewdb.html")
 
 def data_form(request):
     if request.method == 'POST':
