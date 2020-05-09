@@ -4,6 +4,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
+
+    var data = {{ data|safe }}
+    console.log(data)
+
     google.charts.load('current', {
       'packages':['geochart'],
       // Note: you will need to get a mapsApiKey for your project.
@@ -78,7 +82,7 @@
     <option value="saab">Saab</option>
     <option value="opel">Opel</option>
     <option value="audi">Audi</option>
-  </select>  
+  </select>
     <div id="columnchart_values" style="width: 30%; height: 100px;"></div>
     <div id="regions_div" style="width: 50%; height: 500px;"></div>
 </section>
