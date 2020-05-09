@@ -5,6 +5,8 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from .forms import Covid_form
 from .db import insert_into_db
+from django.conf import settings
+from django.shortcuts import redirect
 
 # Create your views here.
 def register(response):
@@ -15,9 +17,13 @@ def index(request):
     return render(request, "logged_out/home.html")
 
 def viewdb(request):
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     return render(request, "logged_in/viewdb.html")
 
 def publish(request):
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     if request.method == 'POST':
         form = Covid_form(request.POST)
         if form.is_valid():
@@ -30,7 +36,11 @@ def publish(request):
     return render(request, 'logged_in/publish.html', {'form': form})
 
 def profile(request):
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     return render(request, "logged_in/profile.html")
 
 def dashboard(request):
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     return render(request, "logged_in/dashboard.html")
