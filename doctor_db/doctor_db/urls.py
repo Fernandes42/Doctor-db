@@ -27,7 +27,9 @@ urlpatterns = [
     path('profile/', profile, name='profile'),
     path('dashboard/', dashboard, name='dashboard'),
 
+    path("accounts/", include("accounts.urls")),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('django_registration.backends.activation.urls')),
+
 ]
 urlpatterns += staticfiles_urlpatterns()
