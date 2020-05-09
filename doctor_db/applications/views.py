@@ -7,7 +7,7 @@ from .forms import Covid_form
 
 # Create your views here.
 def index(request):
-    return render(request, "home.html")
+    return render(request, "logged_out/home.html")
 
 def register(response):
     form = UserCreationForm();
@@ -22,4 +22,4 @@ def data_form(request):
     else:
         form = Covid_form
         print(form)
-    return render(request, 'form.html', {'form': form})
+    return render(request, 'logged_in/publish.html', {'form': form})
