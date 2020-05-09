@@ -6,17 +6,17 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import Covid_form
 
 # Create your views here.
-def index(request):
-    return render(request, "logged_out/home.html")
-
 def register(response):
     form = UserCreationForm();
     return render(response, "register/register.html", {"form":form})
 
+def index(request):
+    return render(request, "logged_out/home.html")
+
 def viewdb(request):
     return render(request, "logged_in/viewdb.html")
 
-def data_form(request):
+def publish(request):
     if request.method == 'POST':
         form = Covid_form(request.POST)
         if form.is_valid():
@@ -26,3 +26,9 @@ def data_form(request):
         form = Covid_form
         print(form)
     return render(request, 'logged_in/publish.html', {'form': form})
+
+def profile(request):
+    return render(request, "logged_in/profile.html")
+
+def dashboard(request):
+    return render(request, "logged_in/dashboard.html")
