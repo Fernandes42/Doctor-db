@@ -16,7 +16,7 @@ def index(request):
 
 def viewdb(request):
     data = retrieve_from_db()
-    return render(request, "logged_in/viewdb.html")
+    return render(request, "logged_in/viewdb.html", {'data':data})
 
 def publish(request):
     if request.method == 'POST':
