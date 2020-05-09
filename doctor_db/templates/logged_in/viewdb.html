@@ -12,7 +12,10 @@
       var barSelector = document.getElementById("aUniqueId").selectedIndex;
       var mapSelector = document.getElementById("other3").selectedIndex;
       var selectedText = document.getElementById("aUniqueId").options;
-  
+
+      var data = {{ data|safe }}
+      console.log(data)
+
     google.charts.load('current', {
       'packages':['geochart'],
       // Note: you will need to get a mapsApiKey for your project.
@@ -144,7 +147,7 @@
         ["Cataracts", 5000, "gold"]
         ]);
       }
-      
+
       var view = new google.visualization.DataView(data);
       view.setColumns([0, 1,
                        { calc: "stringify",
@@ -178,8 +181,8 @@
       <option value="PopularTreatments">Popular Medicines</option>
       <option value="PreexistvsDeceased">Preexisting Conditions vs Number of Deceased</option>
       <option value="PreexistvsRecovered">Preexisting Conditions vs Number of Recovered</option>
-    </select> 
-  </div> 
+    </select>
+  </div>
   <div class="edit3">
     <label class="other" for="graphs">Choose a map graph:</label>
     <select id="other3" class="edit">
@@ -187,8 +190,8 @@
       <option value="PopularStrain">Prevalescent COVID-19 Strain by Country</option>
       <option value="MostRecoveredRace">Race with Most Recoveries by Country</option>
       <option value="DeathliestRace">Race with Least Recoveries by Country</option>
-    </select> 
-  </div> 
+    </select>
+  </div>
     <div id="columnchart_values" style="width: 30%; height: 200px;"></div>
     <div id="regions_div" style="width: 50%; height: 500px;"></div>
 </section>
