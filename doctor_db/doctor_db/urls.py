@@ -17,10 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django_registration import views as v
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", views.index, name="index"),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('django_registration.backends.activation.urls')),
 ]
 urlpatterns += staticfiles_urlpatterns()

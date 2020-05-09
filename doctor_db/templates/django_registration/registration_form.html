@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Create an Account{% endblock %}
+
+{% block stylesheet %}
+    {% load static %}
+    <!-- Replace if you want your own custom stylesheet -->
+    <link rel="stylesheet" href= "{% static 'style.css' %}">
+    <link rel="stylesheet" href= "{% static 'registerstyle.css' %}">
+{% endblock %}
+
+{% block body %}
+  <section class="register">
+    <h2>Sign up</h2>
+    <h4>A few personal details</h4>
+    <form method="post">
+      <label for="fname">First name and Middle Name:</label>
+      <input type="text" id="fname" name="fname"><br>
+      <label for="lname">Last name(s):</label>
+      <input type="text" id="lname" name="lname"><br>
+      <label for="education">Education (Institutions and Degrees):</label>
+      <input type="text" id="education" name="education"><br>
+      <label for="currentPos">Current work position:</label>
+      <input type="text" id="currentPos" name="currentPos"><br>
+      <label for="currentWorkplace">Current workplace:</label>
+      <input type="text" id="currentWorkplace" name="currentWorkplace"><br>
+      <label for="phone">Phone number:</label>
+      <input type="number" id="phone" name="phone"><br>
+
+      <h4>Current involvement with COVID-19</h4>
+      <textarea id="covidT" name="involvementText" cols=150 rows="5"></textarea><br>
+
+      <h4>Where are you currently based?</h4>
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city"><br>
+      <label for="country">Country:</label>
+      <input type="text" id="country" name="country"><br>
+
+      <h4>Upload medical license</h4>
+      <label for="medLicense">Medical License (.pdf):</label>
+      <input type="file" id="medLicense" name="medLicense"><br>
+
+      <h4>Final account details</h4>
+      {% csrf_token %}
+      {% for field in form %}
+        <p>
+          {{ field.label_tag }}<br>
+          {{ field }}
+          {% if field.help_text %}
+            <small style="color: grey">{{ field.help_text }}</small>
+          {% endif %}
+          {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+          {% endfor %}
+        </p>
+      {% endfor %}
+      <button class="customButton" type="submit">Sign up</button>
+    </form>
+  </section>
+{% endblock %}

@@ -1,10 +1,24 @@
 {% extends 'base.html' %}
 
+{% block stylesheet %}
+    {% load static %}
+    <!-- Replace if you want your own custom stylesheet -->
+    <link rel="stylesheet" href= "{% static 'loginstyle.css' %}">
+    <link rel="stylesheet" href= "{% static 'style.css' %}">
+{% endblock %}
+
 {% block body %}
-<h2>Login</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
-</form>
+<section class="login">
+  <div class="card">
+    <div class="container">
+      <h2>Login</h2>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="custombt" type="submit">Login</button>
+      </form>
+      <p class="registerPrompt">New to DoctorDB? <a href="">Register here</a></p>
+    </div>
+  </div>
+</section>
 {% endblock %}

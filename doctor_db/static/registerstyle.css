@@ -1,0 +1,72 @@
+.register {
+    padding-top: 70px;
+    padding-left: 35px;
+    padding-bottom: 70px;
+    font-family: Archia Regular;
+    font-size: 16px;
+}
+
+input[type=text] {
+    padding: 4px 8px;
+    width: 35%;
+    font-family: Archia Regular;
+    font-size: 16px;
+    margin: 4px 0;
+    box-sizing: border-box;
+  }
+
+  input[type=email] {
+    padding: 4px 8px;
+    width: 35%;
+    font-family: Archia Regular;
+    font-size: 16px;
+    margin: 4px 0;
+    box-sizing: border-box;
+  }
+
+  input[type=number] {
+    padding: 4px 8px;
+    width: 35%;
+    font-family: Archia Regular;
+    font-size: 16px;
+    margin: 4px 0;
+    box-sizing: border-box;
+  }
+
+  input[type=password] {
+    padding: 4px 8px;
+    width: 25%;
+    font-family: Archia Regular;
+    font-size: 16px;
+    margin: 4px 0;
+    box-sizing: border-box;
+  }
+
+  input[type=file] {
+    padding: 4px 8px;
+    width: 25%;
+    font-family: Archia Regular;
+    font-size: 14px;
+    margin: 4px 0;
+    box-sizing: border-box;
+  }
+
+  .customButton {
+    font-size: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-family: Archia Regular;
+  }
+
+  #covidT {
+      font-size: 14px;
+      font-family: Archia Regular;
+  }
+
+h2 {
+    padding-bottom: 2px;
+}
+
+h4 {
+    text-decoration: underline;
+}
