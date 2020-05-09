@@ -43,10 +43,8 @@ def retrieve_from_db():
     connection = psycopg2.connect(DATABASE_URL, sslmode='require')
     mark = connection.cursor()
     statement = """SELECT * FROM applications_covid_tb ;"""
-    print(statement)
-
     mark.execute(statement)
     status = mark.fetchall()
     mark.close()
     connection.commit()
-    print(status)
+    return [list(elem) for elem in status]
