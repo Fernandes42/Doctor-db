@@ -4,13 +4,26 @@
 }
 
 #columnchart_values {
-    padding-top: 100px;
+    padding-top: 350px;
     float: left;
 }
 
 #regions_div {
     float: right;
     padding-right: 40px;
-    padding-top: 100px;
+    padding-top: 350px;
+}
+
+.edit {
+    display: inline-flex;
+    float: left;
+    padding-top: 75px;
+    padding-left: 30px;
+    visibility: visible;
+}
+
+.edit2 {
+    padding-top: 75px;
+    float: left;
 }
 

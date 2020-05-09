@@ -1,0 +1,49 @@
+.publishF {
+    padding-top: 10px;
+    float: left;
+    font-family: Archia Regular;
+    padding-left: 30px;
+    font-size: 16px;
+    width: 100%;
+}
+
+h2 {
+    padding-top: 75px;
+    padding-left: 25px;
+    font-family: Archia Regular;
+    font-size: 18px;
+    float: left;
+    text-decoration: underline;
+}
+
+input[type=text] {
+    padding: 2px 8px;
+    width: 150%;
+    font-family: Archia Regular;
+    font-size: 16px;
+    margin: 12px 0;
+    box-sizing: border-box;
+  }
+
+  input[type=number] {
+    padding: 2px 8px;
+    width: 50%;
+    font-family: Archia Regular;
+    font-size: 16px;
+    margin: 12px 0;
+    box-sizing: border-box;
+  }
+
+  input[type=choice] {
+    padding: 2px 8px;
+    width: 50%;
+    font-family: Archia Regular;
+    font-size: 16px;
+    margin: 12px 0;
+    box-sizing: border-box;
+  }
+
+.container {
+    display: inline-block;
+    padding: 0;
+}

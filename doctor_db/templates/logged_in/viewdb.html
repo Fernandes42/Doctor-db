@@ -72,7 +72,14 @@
 
 {% block body %}
 <section class="chartSection">
-    <div id="columnchart_values" style="width: 30%; height: 300px;"></div>
+  <label class="edit2" for="graphs">Choose a graph:</label>
+  <select id="graphs" class="edit">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="opel">Opel</option>
+    <option value="audi">Audi</option>
+  </select>  
+    <div id="columnchart_values" style="width: 30%; height: 100px;"></div>
     <div id="regions_div" style="width: 50%; height: 500px;"></div>
 </section>
 {% endblock %}
