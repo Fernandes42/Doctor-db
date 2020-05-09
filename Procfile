@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath Doctor-db Doctor-db.wsgi
