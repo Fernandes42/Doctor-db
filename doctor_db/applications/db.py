@@ -1,7 +1,12 @@
 import psycopg2
+import urllib.parse as urlparse
+import os
+
+DATABASE_URL = os.environ['DATABASE_URL']
+
 
 def insert_into_db(data):
-    connection = psycopg2.connect('dbname=postgresql-transparent-18692')
+    connection = psycopg2.connect(DATABASE_URL, sslmode='require')
     mark = connection.cursor()
     statement = """INSERT INTO applications_covid_tb (
         age,
@@ -10,12 +15,12 @@ def insert_into_db(data):
         country,
         hospital,
         covid_strain,
-        pre-existing,
+        pre_exisiting,
         hospitalised,
         respirator_required,
         medicine_applied,
         current_status
-        ) VALUES (%s, %s, %s, %s, %s,%s, %s, %s, %s, %s);"""
+        ) VALUES (%s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s);"""
     mark = connection.cursor()
     mark.execute(statement,(
         data['age'],
@@ -32,3 +37,16 @@ def insert_into_db(data):
     ))
     mark.close()
     connection.commit()
+
+
+def retrieve_from_db():
+    connection = psycopg2.connect(DATABASE_URL, sslmode='require')
+    mark = connection.cursor()
+    statement = """SELECT * FROM applications_covid_tb ;"""
+    print(statement)
+
+    mark.execute(statement)
+    status = mark.fetchall()
+    mark.close()
+    connection.commit()
+    print(status)

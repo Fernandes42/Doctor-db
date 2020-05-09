@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from .forms import Covid_form
-from .db import insert_into_db
+from .db import insert_into_db, retrieve_from_db
 
 # Create your views here.
 def register(response):
@@ -15,6 +15,7 @@ def index(request):
     return render(request, "logged_out/home.html")
 
 def viewdb(request):
+    data = retrieve_from_db()
     return render(request, "logged_in/viewdb.html")
 
 def publish(request):
