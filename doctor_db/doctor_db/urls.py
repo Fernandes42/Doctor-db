@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('form/', publish, name='publish'),
     path("", index, name="home"),
-    path('db/', viewdb, name='accessdb'),
+    path('db/', viewdb, name='viewdb'),
     path('profile/', profile, name='profile'),
     path('dashboard/', dashboard, name='dashboard'),
 
