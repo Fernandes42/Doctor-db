@@ -7,6 +7,8 @@ from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 def index(request):
     return render(request, "home.html")
+def accessdb(request):
+    return render(request, "accessdb.html")
 def register(response):
     form = UserCreationForm();
     return render(response, "register/register.html", {"form":form})
