@@ -10,6 +10,6 @@ class Covid_tb(models.Model):
     covid_strain = models.CharField(max_length=1)
     pre_exisiting = models.CharField(max_length=50)
     hospitalised = models.CharField(max_length=1)
+    respirator_required = models.CharField(max_length=1)
     medicine_applied = models.CharField(max_length=30)
-    medicine_applied = models.CharField(max_length=1)
     current_status = models.CharField(max_length=1)

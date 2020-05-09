@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from .forms import Covid_form
+from .db import insert_into_db
 
 # Create your views here.
 def register(response):
@@ -22,6 +23,7 @@ def publish(request):
         if form.is_valid():
             dict = form.cleaned_data
             print(dict)
+            insert_into_db(dict)
     else:
         form = Covid_form
         print(form)
