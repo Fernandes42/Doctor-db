@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    
+
   <head>
     {% block head %}
     {% endblock %}
@@ -36,10 +36,10 @@
         <header class="navContainer">
             <nav class="navBar">
                 <ul>
-                    <li> <a href="">Dashboard</a> </li>
-                    <li> <a href="">Publish</a> </li>
-                    <li> <a href="">View database</a> </li>
-                    <li> <a href="">Profile</a></li>
+                    <li> <a href="{% url 'dashboard' %}">Dashboard</a> </li>
+                    <li> <a href="{% url 'form' %}">Publish</a> </li>
+                    <li> <a href="{% url 'viewdb' %}">View database</a> </li>
+                    <li> <a href="{% url 'profile' %}">Profile</a></li>
                 </ul>
             </nav>
         </header>

@@ -15,15 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from applications.views import index, register, data_form
+from applications.views import index, register, publish, viewdb, profile, dashboard
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django_registration import views as v
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('form/', data_form, name='form'),
+    path('form/', publish, name='publish'),
     path("", index, name="home"),
-    path('db/', views.accessdb, name='accessdb'),
+    path('db/', viewdb, name='accessdb'),
+    path('profile/', profile, name='profile'),
+    path('dashboard/', dashboard, name='dashboard'),
+
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('django_registration.backends.activation.urls')),
 ]
