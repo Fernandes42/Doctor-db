@@ -22,7 +22,7 @@ from django_registration import views as v
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('form/', data_form, name='form'),
-    path("", index, name="index"),
+    path("", index, name="home"),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('django_registration.backends.activation.urls')),
 ]
