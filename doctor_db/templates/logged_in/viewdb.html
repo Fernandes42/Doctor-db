@@ -4,6 +4,15 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
+
+    window.onload = function() { // this will be run when the whole page is loaded
+      var barChart = document.getElementById("aUniqueId");
+      var mapChart = document.getElementById("other3");
+
+      var barSelector = document.getElementById("aUniqueId").selectedIndex;
+      var mapSelector = document.getElementById("other3").selectedIndex;
+      var selectedText = document.getElementById("aUniqueId").options;
+  
     google.charts.load('current', {
       'packages':['geochart'],
       // Note: you will need to get a mapsApiKey for your project.
@@ -12,37 +21,130 @@
     });
     google.charts.setOnLoadCallback(drawRegionsMap);
 
-    function drawRegionsMap() {
-      var data = google.visualization.arrayToDataTable([
-        ['Country', 'Popularity of Ritonavir'],
-        ['Germany', 200],
-        ['United States', 300],
-        ['Colombia', 1000],
-        ['Brazil', 400],
-        ['Canada', 500],
-        ['France', 600],
-        ['RU', 700]
-      ]);
-
-      var options = {};
-
-      var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-
-      chart.draw(data, options);
-    }
-  </script>
-  <script type="text/javascript">
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
+
+    function drawRegionsMap() {
+
+      var data;
+
+      mapChart.addEventListener("change", function() {
+
+      mapSelector = document.getElementById("other3").selectedIndex;
+      selectedText = document.getElementById("aUniqueId").options;
+
+      if (mapSelector == 0) {
+        data = google.visualization.arrayToDataTable([
+        ['Country', 'Most Popular Treatment'],
+        ['Germany', 'Germany: Ritonavir'],
+        ['United States', 'United States: Flavonavir'],
+        ['Colombia', 'Colombia: Flu Medicine'],
+        ['Brazil', 'Brazil: Cold Medicine'],
+        ['Canada', 'Canada: Heart Medicine'],
+        ['France', 'France: Bronchitis Medicine'],
+        ['Russia', 'Russia: Eye Medicine']
+        ]);
+      } else if (mapSelector == 1) {
+        data = google.visualization.arrayToDataTable([
+        ['Country', 'Most Common COVID-19 Strain'],
+        ['Germany', 'Germany: L-Type'],
+        ['United States', 'United States: S-Type'],
+        ['Colombia', 'Colombia: L-Type'],
+        ['Brazil', 'Brazil: L-Type'],
+        ['Canada', 'Canada: L-Type'],
+        ['France', 'France: L-Type'],
+        ['Russia', 'Russia: L-Type']
+        ]);
+      } else if (mapSelector == 2) {
+        data = google.visualization.arrayToDataTable([
+        ['Country', 'Race with Most Recoveries'],
+        ['Germany', 'Germany: Caucasoid'],
+        ['United States', 'United States: Mongoloid'],
+        ['Colombia', 'Colombia: Caucasoid'],
+        ['Brazil', 'Brazil: Australoid'],
+        ['Canada', 'Canada: Caucasoid'],
+        ['France', 'France: Mongoloid'],
+        ['Russia', 'Russia: Caucasoid']
+        ]);
+      } else if (mapSelector == 3) {
+        data = google.visualization.arrayToDataTable([
+        ['Country', 'Race with Most Recoveries'],
+        ['Germany', 'Germany: Caucasoid'],
+        ['United States', 'United States: Mongoloid'],
+        ['Colombia', 'Colombia: Caucasoid'],
+        ['Brazil', 'Brazil: Australoid'],
+        ['Canada', 'Canada: Caucasoid'],
+        ['France', 'France: Mongoloid'],
+        ['Russia', 'Russia: Caucasoid']
+        ]);
+      }
+
+      var options = {legend: 'none'};
+      var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+      chart.draw(data, options);
+      });
+    }
+
     function drawChart() {
-      var data = google.visualization.arrayToDataTable([
+
+      barChart.addEventListener("change", function() {
+
+      barSelector = document.getElementById("aUniqueId").selectedIndex;
+      selectedText = document.getElementById("aUniqueId").options;
+
+      options = {
+        title: selectedText[barSelector].text,
+        width: 600,
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+        };
+
+      var options;
+      var data;
+
+      if (barSelector == 0) {
+        data = google.visualization.arrayToDataTable([
+        ["Medicine", "Deceased", { role: "style" } ],
+        ["Favilavir", 2, "blue"],
+        ["Ritonavir", 20, "#b87333"],
+        ["Chloroquine", 500, "silver"],
+        ["Acetaminophen", 1000, "gold"]
+        ]);
+      } else if (barSelector == 1) {
+        data = google.visualization.arrayToDataTable([
         ["Medicine", "Recovered", { role: "style" } ],
         ["Favilavir", 8, "blue"],
         ["Ritonavir", 54, "#b87333"],
         ["Chloroquine", 200, "silver"],
         ["Lopinavir", 400, "gold"]
-      ]);
-
+        ]);
+      } else if (barSelector == 2) {
+        data = google.visualization.arrayToDataTable([
+        ["Medicine", "Popularity", { role: "style" } ],
+        ["Favilavir", 1987, "blue"],
+        ["Ritonavir", 2500, "#b87333"],
+        ["Chloroquine", 4000, "silver"],
+        ["Lopinavir", 4500, "gold"]
+        ]);
+      } else if (barSelector == 3) {
+        data = google.visualization.arrayToDataTable([
+        ["PreHealth", "Deceased", { role: "style" } ],
+        ["Diabetes", 500, "blue"],
+        ["Heart Disease", 800, "#b87333"],
+        ["Pulmonary Oedema", 1000, "silver"],
+        ["Bronchitis", 5000, "gold"]
+        ]);
+      } else if (barSelector == 4) {
+        data = google.visualization.arrayToDataTable([
+        ["PreHealth", "Recovered", { role: "style" } ],
+        ["Overweight", 2, "blue"],
+        ["Asthma", 50, "#b87333"],
+        ["High Tension", 500, "silver"],
+        ["Cataracts", 5000, "gold"]
+        ]);
+      }
+      
       var view = new google.visualization.DataView(data);
       view.setColumns([0, 1,
                        { calc: "stringify",
@@ -51,16 +153,12 @@
                          role: "annotation" },
                        2]);
 
-      var options = {
-        title: "Medicine applied vs. Recovered",
-        width: 600,
-        height: 400,
-        bar: {groupWidth: "95%"},
-        legend: { position: "none" },
-      };
       var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
       chart.draw(view, options);
-  }
+    });
+    }
+  };
+
   </script>
   {% block stylesheet %}
   {% load static %}
@@ -72,14 +170,27 @@
 
 {% block body %}
 <section class="chartSection">
-  <label class="edit2" for="graphs">Choose a graph:</label>
-  <select id="graphs" class="edit">
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
-    <option value="opel">Opel</option>
-    <option value="audi">Audi</option>
-  </select>  
-    <div id="columnchart_values" style="width: 30%; height: 100px;"></div>
+  <div class="edit2">
+    <label class="other" for="graphs">Choose a bar graph:</label>
+    <select id="aUniqueId" class="edit">
+      <option value="TreatvsDeceased">Medicine vs Number of People Deceased</option>
+      <option value="TreatvsRecovered">Medicine vs Number of People Recovered</option>
+      <option value="PopularTreatments">Popular Medicines</option>
+      <option value="PreexistvsDeceased">Preexisting Conditions vs Number of Deceased</option>
+      <option value="PreexistvsRecovered">Preexisting Conditions vs Number of Recovered</option>
+    </select> 
+  </div> 
+  <div class="edit3">
+    <label class="other" for="graphs">Choose a map graph:</label>
+    <select id="other3" class="edit">
+      <option value="PopularTreatmentCountry">Popular Treatments by Country</option>
+      <option value="PopularStrain">Prevalescent COVID-19 Strain by Country</option>
+      <option value="MostRecoveredRace">Race with Most Recoveries by Country</option>
+      <option value="DeathliestRace">Race with Least Recoveries by Country</option>
+    </select> 
+  </div> 
+    <div id="columnchart_values" style="width: 30%; height: 200px;"></div>
     <div id="regions_div" style="width: 50%; height: 500px;"></div>
 </section>
+
 {% endblock %}

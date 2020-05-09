@@ -4,26 +4,52 @@
 }
 
 #columnchart_values {
-    padding-top: 350px;
+    padding-top: 30px;
     float: left;
 }
 
 #regions_div {
     float: right;
     padding-right: 40px;
-    padding-top: 350px;
-}
-
-.edit {
-    display: inline-flex;
-    float: left;
-    padding-top: 75px;
-    padding-left: 30px;
-    visibility: visible;
+    padding-top: 70px;
 }
 
 .edit2 {
-    padding-top: 75px;
-    float: left;
+    padding-top: 85px;
+    padding-left: 20px;
+    font-size: 18px;
+    font-family: Archia Regular;
 }
+
+.edit3 {
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size: 18px;
+    font-family: Archia Regular;
+}
+
+.edit3 label {
+    text-decoration: underline;
+    padding-right: 10px;
+}
+
+.edit3 select {
+    font-family: Archia Regular;
+    font-size: 14px;
+    width: 25%;
+}
+
+.edit2 label {
+    text-decoration: underline;
+    padding-right: 10px;
+}
+
+.edit2 select {
+    font-family: Archia Regular;
+    font-size: 14px;
+    width: 25%;
+}
+
+
+
 
