@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import Covid_form
 from django.conf import settings
 from django.shortcuts import redirect
-from .db import insert_into_db, retrieve_rows_from_db, retrieve_ages_from_dbretrieve_ages_from_db, retrieve_treatment_data_recovered, retrieve_treatment_data_dead
+from .db import insert_into_db, retrieve_rows_from_db,retrieve_ages_from_db, retrieve_treatment_data_recovered, retrieve_treatment_data_dead
 from .process_db import process_medicine
 from django.views.generic import ListView
 from .models import Covid_tb
@@ -24,11 +24,11 @@ def viewdb(request):
     #     return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     data = retrieve_rows_from_db()
     ages = retrieve_ages_from_db()
-    survived = process_medicine(retrieve_treatment_data_recovered)
-    dead = process_medicine(retrieve_treatment_data_dead)
+    recovered = process_medicine(data, 'R')
+    dead = process_medicine(data, 'D')
 
 
-    return render(request, "logged_in/viewdb.html", {'data':data, 'ages':ages, 'survived': survived, 'dead': dead})
+    return render(request, "logged_in/viewdb.html", {'data':data, 'ages':ages,'recovered':recovered, 'dead':dead})
 
 def publish(request):
     # if not request.user.is_authenticated:
