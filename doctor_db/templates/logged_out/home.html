@@ -2,10 +2,29 @@
 
 {% block head_title %} DrDB {% endblock %}
 
+{% block stylesheet %}
+    {% load static %}
+    <!-- Replace if you want your own custom stylesheet -->
+    <link rel="stylesheet" href= "{% static 'profile.css' %}">
+    <link rel="stylesheet" href= "{% static 'style.css' %}">
+    <link rel="stylesheet" href= "{% static 'home.css' %}">
+
+{% endblock %}
 
 
 {% block body %}
+<section class="login">
+    <div class="center-text">
+        <h1> Welcome to DoctorDB </h1>
+        <p> We are a team of enthusiastic Georgia Tech students commited to solve a pressing issue in the fight against Corona</p>
+        <br>
+        <p> <b>Problem:</b> Real time information on patients is nonexistent</p>
+        <br>
 
+        <p> <b>Our Solution</b>: We are providing a service where Doctors can communicate and share information easily with other doctors</p>
+
+    </div>
+  </section>
 {% endblock %}
 
 
