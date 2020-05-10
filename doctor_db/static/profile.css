@@ -1,0 +1,118 @@
+body {
+    background-color: #DAE3E7;
+}
+
+img {
+    border-radius: 50%;
+    padding-top: 20px;
+}
+
+.pencilcolor {
+    color: gray;
+    padding-left: 43%;
+    padding-top: 12px;
+}
+
+.pencilcolor2 {
+    color: gray;
+    padding-left: 94%;
+    padding-top: 12px;
+}
+
+.customH4 {
+    padding-top: 10px;
+}
+
+.pencilcolor3 {
+    color: gray;
+    padding-left: 175%;
+    padding-top: 12px;
+}
+
+.pencilcolor4 {
+    color: gray;
+    padding-left: 19%;
+    padding-top: 12px;
+}
+
+.basicInfoContainer {
+    padding-left: 30px;
+    padding-top: 5px;
+}
+
+.contactContainer {
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.general {
+    display: inline-block;
+}
+
+h4 {
+    font-size: 15px;
+    color: #778492;
+    margin-top: -14px;
+}
+
+.login {
+    font-family: Archia Regular;
+    text-align: left;
+    font-size: 18px;
+    padding-top: 100px;
+    padding-left: 20px;
+}
+
+.card {
+    /* Add shadows to create the "card" effect */
+    width: 40%;
+    float: left;
+    margin: 0 auto;
+    position: absolute;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: white;
+    transition: 0.3s;
+    padding-bottom: 12px;
+  }
+
+.card2 {
+    width: 40%;
+    margin: 0 auto;
+    float: left;
+    position: absolute;
+    margin-top: 200px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: white;
+    transition: 0.3s;
+    padding-bottom: 12px;
+}
+
+.card3 {
+    width: 40%;
+    margin: 0 auto;
+    float: left;
+    position: absolute;
+    margin-top: 375px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: white;
+    transition: 0.3s;
+    padding-bottom: 12px;
+}
+
+#customFourth {
+    margin-left: 800px;
+    margin-top: -5px;
+}
+  
+  /* On mouse-over, add a deeper shadow */
+  .card:hover, .card2:hover, .card3:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  /* Add some padding inside the card container */
+  .container {
+    padding: 2px 32px;
+    display: inline-flex;
+  }
+
+

@@ -2,6 +2,13 @@ window.onload = function () { // this will be run when the whole page is loaded
     var barChart = document.getElementById("aUniqueId");
     var mapChart = document.getElementById("other3");
 
+    var dbData = document.getElementById("dataP").textContent;
+    var b = dbData.replace(/'/g, '"');
+    var output = JSON.parse(b);
+    console.log(output);
+    var getMedicine;
+    var getStatus;
+
     var barSelector = document.getElementById("aUniqueId").selectedIndex;
     var mapSelector = document.getElementById("other3").selectedIndex;
     var selectedText = document.getElementById("aUniqueId").options;
@@ -160,15 +167,62 @@ window.onload = function () { // this will be run when the whole page is loaded
 
             var options;
             var data;
+            var aList = [];
+            var currentMedDat;
+            var intList = [];
+            var googleStandard = ["Medicine", "Deceased", { role: "style" }];
+            var found = false;
+            var currM;
+            var randColor;
 
             if (barSelector == 0) {
-                data = google.visualization.arrayToDataTable([
-                    ["Medicine", "Deceased", { role: "style" }],
-                    ["Favilavir", 2, "blue"],
-                    ["Ritonavir", 20, "#b87333"],
-                    ["Chloroquine", 500, "silver"],
-                    ["Acetaminophen", 1000, "gold"]
-                ]);
+                for (var i = 0; i < output.length; i++) {
+                    found = false;
+                    getMedicine = output[i][9];
+                    getStatus = output[i][10];
+
+                    getMedicine = getMedicine.replace(/\s/g, '');
+                    intList = getMedicine.split(",")
+
+                    if (getStatus != "D") {
+                        continue;
+                    }
+
+                    for (var a = 0; a<intList.length; a++) {
+                        currM = intList[a];
+                        found = false;
+                        for (var j = 0; j<aList.length; j++) {
+                            found = false;
+                            currentMedDat = aList[j][0];
+        
+                            if (currentMedDat == currM) {
+                                found = true;
+                                aList[j][1]++;
+                                continue;
+                            } 
+                        } 
+                        if (!found) {
+                            found = false;
+                            randColor = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+                            aList.push([currM, 1, randColor]);
+                        }
+                    }   
+                }
+
+                aList.pop();
+
+                aList.sort(sortFunction);
+                function sortFunction(a, b) {
+                    if (a[0] === b[0]) {
+                        return 0;
+                    }
+                    return (a[1] > b[1]) ? 1 : -1;
+                }
+
+                aList.unshift(googleStandard);
+                console.log(aList);
+
+                data = google.visualization.arrayToDataTable(aList);
             } else if (barSelector == 1) {
                 data = google.visualization.arrayToDataTable([
                     ["Medicine", "Recovered", { role: "style" }],

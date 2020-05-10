@@ -3,12 +3,62 @@
 {% block stylesheet %}
     {% load static %}
     <!-- Replace if you want your own custom stylesheet -->
-    <link rel="stylesheet" href= "{% static 'accessdbstyle.css' %}">
+    <link rel="stylesheet" href= "{% static 'profile.css' %}">
     <link rel="stylesheet" href= "{% static 'style.css' %}">
 {% endblock %}
 
 {% block body %}
-<section class="cl">
+<section class="login">
+    <div class="general">
+    <div class="card">
+      <div class="container">
+        {% load static %}
+        <img src="{% static 'img_avatar.png' %}" alt="Avatar" style="width:125px">
+        <div class="basicInfoContainer">
+            <h2>David Moreno</h2>
+            <h4>Neumologist</h4>
+            <h4>Graduated from Emory University</h4>
+            <h4>London, United Kingdom</h4>
+        </div>
+        <i class="fa fa-pencil fa-2x pencilcolor"></i>
+      </div>
+    </div>
 
-</section>
+    <div class="card2">
+        <div class="container">
+          <div class="contactContainer">
+              <h2>Contact Information</h2>
+              <h4>Email: example@gmail.com</h4>
+              <h4>Phone: +1 (404) 325-6789</h4>
+          </div>
+          <i class="fa fa-pencil fa-2x pencilcolor2"></i>
+        </div>
+    </div>
+
+    <div class="card3">
+        <div class="container">
+          <div class="contactContainer">
+              <h2>Your Files</h2>
+              <h4>1. Medical License</h4>
+              <h4>Uploaded on May 2, 2020</h4>
+          </div>
+          <i class="fa fa-pencil fa-2x pencilcolor3"></i>
+        </div>
+    </div>
+    </div>
+
+    <div id="customFourth" class="card">
+        <div class="container">
+          <div class="contactContainer">
+              <h2>Your Involvement with COVID-19</h2>
+              <h4 class="customH4">Thank you for your service doctor!</h4>
+              <h4 class="customH4">Hospital: Central Hospital London</h4>
+              <h4 class="customH4">My current involvement with COVID-19 involves curing patients <br>
+                on a daily basis. I constantly manage the statistics available at <br>
+                the hospital and this is why I decided to support this project.</h4>
+          </div>
+          <i class="fa fa-pencil fa-2x pencilcolor4"></i>
+        </div>
+    </div>
+  </section>
 {% endblock %}
