@@ -53,6 +53,26 @@ def retrieve_rows_from_db():
     connection.commit()
     return [list(elem) for elem in status]
 
+def retrieve_treatment_data_recovered():
+    connection = psycopg2.connect(DATABASE_URL, sslmode='require')
+    mark = connection.cursor()
+    statement = """SELECT medicine_applied FROM applications_covid_tb WHERE current_status='R' ;"""
+    mark.execute(statement)
+    status = mark.fetchall()
+    mark.close()
+    connection.commit()
+    data = [list(elem) for elem in status]
+
+def retrieve_treatment_data_dead():
+    connection = psycopg2.connect(DATABASE_URL, sslmode='require')
+    mark = connection.cursor()
+    statement = """SELECT medicine_applied FROM applications_covid_tb WHERE current_status='D' ;"""
+    mark.execute(statement)
+    status = mark.fetchall()
+    mark.close()
+    connection.commit()
+    data = [list(elem) for elem in status]
+
 def retrieve_ages_from_db():
     # Default bounds for now
     bounds = (25, 45, 65)
