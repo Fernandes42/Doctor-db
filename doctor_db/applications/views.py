@@ -24,11 +24,12 @@ def viewdb(request):
     #     return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     data = retrieve_rows_from_db()
     ages = retrieve_ages_from_db()
+    print(data)
     recovered = process_medicine(data, 'R')
-    dead = process_medicine(data, 'D')
+    # dead = process_medicine(data, 'D')
 
 
-    return render(request, "logged_in/viewdb.html", {'data':data, 'ages':ages,'recovered':recovered, 'dead':dead})
+    return render(request, "logged_in/viewdb.html", {'data':data, 'ages':ages,'recovered':recovered})
 
 def publish(request):
     # if not request.user.is_authenticated:
