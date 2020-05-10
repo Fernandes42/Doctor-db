@@ -39,7 +39,7 @@ def insert_into_db(data):
     connection.commit()
 
 
-def retrieve_from_db():
+def retrieve_rows_from_db():
     connection = psycopg2.connect(DATABASE_URL, sslmode='require')
     mark = connection.cursor()
     statement = """SELECT * FROM applications_covid_tb ;"""
@@ -48,3 +48,36 @@ def retrieve_from_db():
     mark.close()
     connection.commit()
     return [list(elem) for elem in status]
+
+def retrieve_ages_from_db():
+    # Default bounds for now
+    bounds = (25, 45, 65)
+    age_counts = []
+    connection = psycopg2.connect(DATABASE_URL, sslmode='require')
+    mark = connection.cursor()
+
+    statement = """SELECT COUNT(*) FROM applications_covid_tb
+                    WHERE age < 25;"""
+    mark.execute(statement)
+    status = mark.fetchall()
+    age_counts.append(list(status))
+
+    statement = """SELECT COUNT(*) FROM applications_covid_tb
+                        WHERE age > 18 AND age < 45;"""
+    mark.execute(statement)
+    status = mark.fetchall()
+    age_counts.append(list(status))
+
+    statement = """SELECT COUNT(*) FROM applications_covid_tb
+                        WHERE age > 45 AND age < 65;"""
+    mark.execute(statement)
+    status = mark.fetchall()
+    age_counts.append(list(status))
+
+    statement = """SELECT COUNT(*) FROM applications_covid_tb
+                        WHERE age > 65;"""
+    mark.execute(statement)
+    status = mark.fetchall()
+    age_counts.append(list(status))
+
+    return age_counts
