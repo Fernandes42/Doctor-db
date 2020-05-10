@@ -46,7 +46,17 @@ def insert_into_db(data):
 def retrieve_rows_from_db():
     connection = psycopg2.connect(DATABASE_URL, sslmode='require')
     mark = connection.cursor()
-    statement = """SELECT * FROM applications_covid_tb ;"""
+    statement = """SELECT         age,
+            sex,
+            race,
+            country,
+            hospital,
+            covid_strain,
+            pre_exisiting,
+            hospitalised,
+            respirator_required,
+            medicine_applied,
+            current_status FROM applications_covid_tb ;"""
     mark.execute(statement)
     status = mark.fetchall()
     mark.close()

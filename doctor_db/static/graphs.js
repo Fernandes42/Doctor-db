@@ -1,11 +1,12 @@
 window.onload = function () { // this will be run when the whole page is loaded
     var barChart = document.getElementById("aUniqueId");
     var mapChart = document.getElementById("other3");
+    // var recovered =  {{ recovered|safe }}
 
-    var dbData = document.getElementById("dataP").textContent;
-    var b = dbData.replace(/'/g, '"');
-    var output = JSON.parse(b);
-    console.log(output);
+    // var dbData = document.getElementById("dataP").textContent;
+    // var b = dbData.replace(/'/g, '"');
+    var output = new_data;
+    // console.log(output);
     var getMedicine;
     var getStatus;
 
@@ -249,13 +250,17 @@ window.onload = function () { // this will be run when the whole page is loaded
 
                 data = google.visualization.arrayToDataTable(aList);
             } else if (barSelector == 1) {
+                console.log(recovered)
+                var re = [];
                 data = google.visualization.arrayToDataTable([
                     ["Medicine", "Recovered", { role: "style" }],
-                    ["Favilavir", 8, "blue"],
-                    ["Ritonavir", 54, "#b87333"],
-                    ["Chloroquine", 200, "silver"],
-                    ["Lopinavir", 400, "gold"]
+                    recovered[0],
+                    recovered[1],
+                    recovered[2]
                 ]);
+
+
+
             } else if (barSelector == 2) {
                 data = google.visualization.arrayToDataTable([
                     ["Medicine", "Popularity", { role: "style" }],
