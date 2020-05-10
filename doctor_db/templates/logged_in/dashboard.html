@@ -1,1 +1,20 @@
 {% extends 'logged_in/base_loggedin.html' %}
+
+{% load django_tables2 %}
+
+{% block head_title %}
+    Data In Table
+{% endblock %}
+
+{% block stylesheet %}
+    {% load static %}
+    <link rel="stylesheet" href= "{% static 'tableStyle.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block body %}
+    <div>
+        {% render_table table %}
+    </div>
+
+{% endblock %}

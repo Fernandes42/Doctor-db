@@ -53,8 +53,6 @@ def profile(request):
 def dashboard(request):
     # if not request.user.is_authenticated:
     #     return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
-    return render(request, "logged_in/dashboard.html")
+    table = Covid_tb.objects.all()
+    return render(request, "logged_in/dashboard.html", locals())
 
-def tableView(request):
-    data = Covid_tb.objects.all()
-    return render(request, "table.html", locals())

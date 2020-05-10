@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from applications.views import index, register, publish, viewdb, profile, dashboard, tableView
+from applications.views import index, register, publish, viewdb, profile, dashboard
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django_registration import views as v
 from django_registration.backends.one_step.views import RegistrationView
@@ -27,7 +27,6 @@ urlpatterns = [
     path('db/', viewdb, name='viewdb'),
     path('profile/', profile, name='profile'),
     path('dashboard/', dashboard, name='dashboard'),
-    path('tableView/', tableView, name="tableView"),
 
     path('accounts/register/',
         RegistrationView.as_view(success_url='/profile/'),
