@@ -25,6 +25,8 @@ RESPIRATOR_CHOICE =(
     ("N", "No"),
 )
 
+
+
 class Covid_form(forms.Form):
     age = forms.IntegerField(label='Age')
     sex = forms.ChoiceField(choices = SEX_CHOICE)
@@ -38,4 +40,4 @@ class Covid_form(forms.Form):
     medicine_applied = forms.CharField(label='Medicine Applied',max_length=30)
     current_status = forms.ChoiceField(label='Current Status',choices= STATUS_CHOICE)
     date_of_leave = forms.DateField(label='Date of Leave (MM/DD/YY)')
-    length_of_stay = forms.DurationField(label="Duration of Stay (Days)")
+    length_of_stay = forms.IntegerField(label="Days in care")

@@ -14,4 +14,4 @@ class Covid_tb(models.Model):
     medicine_applied = models.CharField(max_length=30)
     current_status = models.CharField(max_length=1)
     date_of_leave = models.DateTimeField()
-    length_of_stay = models.DurationField()
+    length_of_stay = models.IntegerField()
