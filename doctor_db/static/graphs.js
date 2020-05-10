@@ -33,7 +33,9 @@ window.onload = function () { // this will be run when the whole page is loaded
         var colorArray = [];
         var valuesArray = [];
         var currentRace;
-        var currentStrain;
+        var currentStrain; 
+        var getCountry;
+        var getStrain;
 
         mapChart.addEventListener("change", function () {
 
@@ -52,6 +54,32 @@ window.onload = function () { // this will be run when the whole page is loaded
                     ['Russia', 'Russia: Eye Medicine']
                 ]);
             } else if (mapSelector == 1) {
+                var covidArray = [];
+                var currentCountry;
+                for (var i = 0; i < output.length; i++) {
+
+                    getCountry = output[i][4];
+                    getStrain = output[i][6];
+
+                    for (var j = 0; j<covidArray.length; j++) {
+                        currentCountry = aList[j][0];
+                        if (currentCountry == getCountry) {
+                            if (getStrain == "L") {
+                                covidArray[j][1]++;
+                            } else {
+                                covidArray[j][2]++;
+                            }
+                            continue;
+                        } 
+                    } 
+
+                    if (getStrain == "L") {
+                        covidArray.push([getCountry, 1, 0])
+                    } else {
+                        covidArray.push([getCountry, 0, 1])
+                    }
+                }
+                console.log(covidArray);
                 dataArray = [
                     ['Country', 'COVID-19 Strain Color Code'],
                     ['Germany', 'Germany: L-Type'],
