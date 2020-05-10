@@ -1,0 +1,17 @@
+{% extends 'logged_in/base_loggedin.html' %}
+{% block stylesheet %}
+    {% load static %}
+    <!-- Replace if you want your own custom stylesheet -->
+    <link rel="stylesheet" href= "{% static 'publishstyle.css' %}">
+    <link rel="stylesheet" href= "{% static 'style.css' %}">
+{% endblock %}
+
+
+{% block body %}
+<section>
+    <div class="container">
+        <h2>Form Successfully submitted</h2>
+    </div>
+</section>
+
+{% endblock %}

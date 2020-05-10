@@ -33,7 +33,7 @@ window.onload = function () { // this will be run when the whole page is loaded
         var colorArray = [];
         var valuesArray = [];
         var currentRace;
-        var currentStrain; 
+        var currentStrain;
         var getCountry;
         var getStrain;
         var gFormat = [['Country', 'COVID-19 Strain Color Code']];
@@ -71,8 +71,8 @@ window.onload = function () { // this will be run when the whole page is loaded
                                 covidArray[j][2]++;
                             }
                             continue;
-                        } 
-                    } 
+                        }
+                    }
 
                     if (getStrain == "L") {
                         covidArray.push([getCountry, 1, 0])
@@ -89,12 +89,12 @@ window.onload = function () { // this will be run when the whole page is loaded
                     num2 = covidArray[q][2];
                     if (num1 > num2) {
                         gFormat.push([covidArray[q][0], 0]);
-                        
+
                     } else {
                         gFormat.push([covidArray[q][0], 1]);
                     }
                 }
-                
+
                 data = google.visualization.arrayToDataTable(gFormat);
                 var options = {
                     colorAxis: {
@@ -219,19 +219,19 @@ window.onload = function () { // this will be run when the whole page is loaded
                         for (var j = 0; j<aList.length; j++) {
                             found = false;
                             currentMedDat = aList[j][0];
-        
+
                             if (currentMedDat == currM) {
                                 found = true;
                                 aList[j][1]++;
                                 continue;
-                            } 
-                        } 
+                            }
+                        }
                         if (!found) {
                             found = false;
                             randColor = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
                             aList.push([currM, 1, randColor]);
                         }
-                    }   
+                    }
                 }
 
                 aList.pop();

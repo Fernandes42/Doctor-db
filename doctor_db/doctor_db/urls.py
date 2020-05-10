@@ -18,6 +18,7 @@ from django.urls import path, include
 from applications.views import index, register, publish, viewdb, profile, dashboard, tableView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django_registration import views as v
+from django_registration.backends.one_step.views import RegistrationView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,10 +29,11 @@ urlpatterns = [
     path('dashboard/', dashboard, name='dashboard'),
     path('tableView/', tableView, name="tableView"),
 
-    path("accounts/", include("accounts.urls")),
+    path('accounts/register/',
+        RegistrationView.as_view(success_url='/profile/'),
+        name='django_registration_register'),
+    path('accounts/', include('django_registration.backends.one_step.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/', include('django_registration.backends.activation.urls')),
-
 
 ]
 urlpatterns += staticfiles_urlpatterns()

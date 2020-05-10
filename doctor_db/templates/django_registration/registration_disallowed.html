@@ -1,0 +1,17 @@
+{% extends 'logged_out/base_logged_out.html' %}
+{% block title %}Registration Failed{% endblock %}
+
+{% block stylesheet %}
+    {% load static %}
+    <!-- Replace if you want your own custom stylesheet -->
+    <link rel="stylesheet" href= "{% static 'style.css' %}">
+    <link rel="stylesheet" href= "{% static 'registerstyle.css' %}">
+{% endblock %}
+
+{% block body %}
+  <section class="register">
+    <h2>Registration failed</h2>
+    <h4>Contact site admin at: vtstriker72@gmail.com</h4>
+
+  </section>
+{% endblock %}
