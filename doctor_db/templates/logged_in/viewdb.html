@@ -12,7 +12,9 @@
       var barSelector = document.getElementById("aUniqueId").selectedIndex;
       var mapSelector = document.getElementById("other3").selectedIndex;
       var selectedText = document.getElementById("aUniqueId").options;
-  
+
+      var raceList = [["Caucasoid", 'green'], ["Negroid", 'blue'], ["Capoid", 'gray'], ["Mongoloid", 'red'], ["Australoid", 'orange']];
+      var covidList = [["L-Type", 'blue'], ["S-Type", 'green']];
     google.charts.load('current', {
       'packages':['geochart'],
       // Note: you will need to get a mapsApiKey for your project.
@@ -27,6 +29,11 @@
     function drawRegionsMap() {
 
       var data;
+      var dataArray;
+      var colorArray = [];
+      var valuesArray = [];
+      var currentRace;
+      var currentStrain;
 
       mapChart.addEventListener("change", function() {
 
@@ -45,8 +52,8 @@
         ['Russia', 'Russia: Eye Medicine']
         ]);
       } else if (mapSelector == 1) {
-        data = google.visualization.arrayToDataTable([
-        ['Country', 'Most Common COVID-19 Strain'],
+        dataArray = [
+        ['Country', 'COVID-19 Strain Color Code'],
         ['Germany', 'Germany: L-Type'],
         ['United States', 'United States: S-Type'],
         ['Colombia', 'Colombia: L-Type'],
@@ -54,21 +61,54 @@
         ['Canada', 'Canada: L-Type'],
         ['France', 'France: L-Type'],
         ['Russia', 'Russia: L-Type']
-        ]);
+        ]
+        for (var i = 1; i < dataArray.length; i++) {
+          currentStrain = dataArray[i][1];
+          if (currentStrain.includes(covidList[0][0])) {
+            dataArray[i][1] = 0;
+          } else if (currentStrain.includes(covidList[1][0])) {
+            dataArray[i][1] = 1;
+          }
+        }
+        data = google.visualization.arrayToDataTable(dataArray);
+        var options = {colorAxis: {
+        colors: ["blue", "green"],
+        values: [0, 1]
+        }};
       } else if (mapSelector == 2) {
-        data = google.visualization.arrayToDataTable([
-        ['Country', 'Race with Most Recoveries'],
-        ['Germany', 'Germany: Caucasoid'],
-        ['United States', 'United States: Mongoloid'],
-        ['Colombia', 'Colombia: Caucasoid'],
-        ['Brazil', 'Brazil: Australoid'],
-        ['Canada', 'Canada: Caucasoid'],
-        ['France', 'France: Mongoloid'],
-        ['Russia', 'Russia: Caucasoid']
-        ]);
+        dataArray = [
+        ['Country', 'Race Color Code'],
+        ['Germany', 'Caucasoid'],
+        ['United States', 'Mongoloid'],
+        ['Colombia', 'Caucasoid'],
+        ['Brazil', 'Australoid'],
+        ['Canada', 'Caucasoid'],
+        ['France', 'Mongoloid'],
+        ['Russia', 'Caucasoid']
+        ]
+
+        for (var i = 1; i < dataArray.length; i++) {
+          currentRace = dataArray[i][1];
+          if (currentRace.includes(raceList[0][0])) {
+            dataArray[i][1] = 0;
+          } else if (currentRace.includes(raceList[1][0])) {
+            dataArray[i][1] = 1;
+          } else if (currentRace.includes(raceList[2][0])) {
+            dataArray[i][1] = 2;
+          } else if (currentRace.includes(raceList[3][0])) {
+            dataArray[i][1] = 3;
+          } else if (currentRace.includes(raceList[4][0])) {
+            dataArray[i][1] = 4;
+          } 
+        }
+        data = google.visualization.arrayToDataTable(dataArray);
+        var options = {colorAxis: {
+        colors: ["green", "blue", "gray", "red", "orange"],
+        values: [0, 1, 2, 3, 4]
+        }};
       } else if (mapSelector == 3) {
-        data = google.visualization.arrayToDataTable([
-        ['Country', 'Race with Most Recoveries'],
+        dataArray = [
+        ['Country', 'Race with Least Recoveries'],
         ['Germany', 'Germany: Caucasoid'],
         ['United States', 'United States: Mongoloid'],
         ['Colombia', 'Colombia: Caucasoid'],
@@ -76,10 +116,29 @@
         ['Canada', 'Canada: Caucasoid'],
         ['France', 'France: Mongoloid'],
         ['Russia', 'Russia: Caucasoid']
-        ]);
+        ]
+        for (var i = 1; i < dataArray.length; i++) {
+          currentRace = dataArray[i][1];
+          if (currentRace.includes(raceList[0][0])) {
+            dataArray[i][1] = 0;
+          } else if (currentRace.includes(raceList[1][0])) {
+            dataArray[i][1] = 1;
+          } else if (currentRace.includes(raceList[2][0])) {
+            dataArray[i][1] = 2;
+          } else if (currentRace.includes(raceList[3][0])) {
+            dataArray[i][1] = 3;
+          } else if (currentRace.includes(raceList[4][0])) {
+            dataArray[i][1] = 4;
+          } 
+        }
+        data = google.visualization.arrayToDataTable(dataArray);
+        var options = {colorAxis: {
+        colors: ["green", "blue", "gray", "red", "orange"],
+        values: [0, 1, 2, 3, 4]
+        }};
       }
 
-      var options = {legend: 'none'};
+    
       var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
       chart.draw(data, options);
       });
@@ -191,6 +250,10 @@
   </div> 
     <div id="columnchart_values" style="width: 30%; height: 200px;"></div>
     <div id="regions_div" style="width: 50%; height: 500px;"></div>
+    <div class="work">
+    <h3>Map Color Code (Race): 0 = Caucasian, 1 = Negroid, 2 = Capoid, 3 = Mongoloid, 4 = Australoid <br><br>
+        Map Color Code (COVID): 0 = L-Type, 1 = S-Type</h3>
+    </div>
 </section>
 
 {% endblock %}
