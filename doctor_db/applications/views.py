@@ -27,7 +27,7 @@ def viewdb(request):
     dead = process_medicine(retrieve_treatment_data_dead)
 
 
-    return render(request, "logged_in/viewdb.html", {'data':data, 'ages':ages, 'survived': survived, 'dead', dead})
+    return render(request, "logged_in/viewdb.html", {'data':data, 'ages':ages, 'survived': survived, 'dead': dead})
 
 def publish(request):
     # if not request.user.is_authenticated:
