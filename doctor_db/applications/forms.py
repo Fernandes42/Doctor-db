@@ -37,3 +37,5 @@ class Covid_form(forms.Form):
     respirator_required = forms.ChoiceField(label='Respitator Required',choices = RESPIRATOR_CHOICE)
     medicine_applied = forms.CharField(label='Medicine Applied',max_length=30)
     current_status = forms.ChoiceField(label='Current Status',choices= STATUS_CHOICE)
+    date_of_leave = forms.DateField(label='Date of Leave')
+    length_of_stay = forms.DurationField(label="Duration of Stay")
