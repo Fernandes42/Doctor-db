@@ -4,10 +4,11 @@ from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from .forms import Covid_form
-from .db import insert_into_db
 from django.conf import settings
 from django.shortcuts import redirect
 from .db import insert_into_db, retrieve_rows_from_db, retrieve_ages_from_db
+from django.views.generic import ListView
+from .models import Covid_tb
 
 # Create your views here.
 def register(response):
@@ -47,3 +48,7 @@ def dashboard(request):
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     return render(request, "logged_in/dashboard.html")
+
+def tableView(request):
+    data = Covid_tb.objects.all()
+    return render(request, "table.html", locals())

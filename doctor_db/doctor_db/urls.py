@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from applications.views import index, register, publish, viewdb, profile, dashboard
+from applications.views import index, register, publish, viewdb, profile, dashboard, tableView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django_registration import views as v
 
@@ -26,10 +26,12 @@ urlpatterns = [
     path('db/', viewdb, name='viewdb'),
     path('profile/', profile, name='profile'),
     path('dashboard/', dashboard, name='dashboard'),
+    path('tableView/', tableView, name="tableView"),
 
     path("accounts/", include("accounts.urls")),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('django_registration.backends.activation.urls')),
+
 
 ]
 urlpatterns += staticfiles_urlpatterns()

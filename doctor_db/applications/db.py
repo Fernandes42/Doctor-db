@@ -19,8 +19,10 @@ def insert_into_db(data):
         hospitalised,
         respirator_required,
         medicine_applied,
-        current_status
-        ) VALUES (%s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s);"""
+        current_status,
+        date_of_leave,
+        length_of_stay,
+        ) VALUES (%s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s);"""
     mark = connection.cursor()
     mark.execute(statement,(
         data['age'],
@@ -33,7 +35,9 @@ def insert_into_db(data):
         data['hospitalised'],
         data['respirator_required'],
         data['medicine_applied'],
-        data['current_status']
+        data['current_status'],
+        data['date_of_leave'],
+        data['length_of_stay']
     ))
     mark.close()
     connection.commit()
