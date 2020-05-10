@@ -21,7 +21,7 @@ def insert_into_db(data):
         medicine_applied,
         current_status,
         date_of_leave,
-        length_of_stay,
+        length_of_stay
         ) VALUES (%s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s);"""
     mark = connection.cursor()
     mark.execute(statement,(
