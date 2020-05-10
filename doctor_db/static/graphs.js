@@ -36,6 +36,7 @@ window.onload = function () { // this will be run when the whole page is loaded
         var currentStrain; 
         var getCountry;
         var getStrain;
+        var gFormat = [['Country', 'COVID-19 Strain Color Code']];
 
         mapChart.addEventListener("change", function () {
 
@@ -62,7 +63,7 @@ window.onload = function () { // this will be run when the whole page is loaded
                     getStrain = output[i][6];
 
                     for (var j = 0; j<covidArray.length; j++) {
-                        currentCountry = aList[j][0];
+                        currentCountry = covidArray[j][0];
                         if (currentCountry == getCountry) {
                             if (getStrain == "L") {
                                 covidArray[j][1]++;
@@ -79,26 +80,22 @@ window.onload = function () { // this will be run when the whole page is loaded
                         covidArray.push([getCountry, 0, 1])
                     }
                 }
-                console.log(covidArray);
-                dataArray = [
-                    ['Country', 'COVID-19 Strain Color Code'],
-                    ['Germany', 'Germany: L-Type'],
-                    ['United States', 'United States: S-Type'],
-                    ['Colombia', 'Colombia: L-Type'],
-                    ['Brazil', 'Brazil: L-Type'],
-                    ['Canada', 'Canada: L-Type'],
-                    ['France', 'France: L-Type'],
-                    ['Russia', 'Russia: L-Type']
-                ]
-                for (var i = 1; i < dataArray.length; i++) {
-                    currentStrain = dataArray[i][1];
-                    if (currentStrain.includes(covidList[0][0])) {
-                        dataArray[i][1] = 0;
-                    } else if (currentStrain.includes(covidList[1][0])) {
-                        dataArray[i][1] = 1;
+
+                var num1;
+                var num2;
+
+                for (var q = 0; q < covidArray.length; q++) {
+                    num1 = covidArray[q][1];
+                    num2 = covidArray[q][2];
+                    if (num1 > num2) {
+                        gFormat.push([covidArray[q][0], 0]);
+                        
+                    } else {
+                        gFormat.push([covidArray[q][0], 1]);
                     }
                 }
-                data = google.visualization.arrayToDataTable(dataArray);
+                
+                data = google.visualization.arrayToDataTable(gFormat);
                 var options = {
                     colorAxis: {
                         colors: ["blue", "green"],
