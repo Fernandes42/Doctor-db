@@ -7,7 +7,7 @@ from .forms import Covid_form
 from .db import insert_into_db
 from django.conf import settings
 from django.shortcuts import redirect
-from .db import insert_into_db, retrieve_from_db
+from .db import insert_into_db, retrieve_rows_from_db, retrieve_ages_from_db
 
 # Create your views here.
 def register(response):
@@ -20,8 +20,9 @@ def index(request):
 def viewdb(request):
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
-    data = retrieve_from_db()
-    return render(request, "logged_in/viewdb.html", {'data':data})
+    data = retrieve_rows_from_db()
+    ages = retrieve_ages_from_db()
+    return render(request, "logged_in/viewdb.html", {'data':data, 'ages': ages})
 
 def publish(request):
     if not request.user.is_authenticated:
